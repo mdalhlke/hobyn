@@ -22,3 +22,13 @@ class Hobby:
     C-points= ndb.IntProperty()
     E-points= ndb.IntProperty()
     
+class Message:
+    user_key= ndb.KeyProperty()
+    date_received= ndb.DateProperty()
+    title= ndb.StringProperty()
+    content= ndb.StringProperty()
+
+class Friend:
+    follower_key= ndb.KeyProperty()
+    followee_key= ndb.KeyProperty()
+    
