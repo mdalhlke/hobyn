@@ -5,23 +5,22 @@ class User(ndb.Model):
     avatar= ndb.BlobProperty()
     date_created= ndb.DateProperty()
     friends= ndb.StringProperty()
-    avatar= ImageProperty()
-    N-points= ndb.IntegerProperty()
-    O-points= ndb.IntegerProperty()
-    A-points= ndb.IntegerProperty()
-    C-points= ndb.IntegerProperty()
-    E-points= ndb.IntegerProperty()
-    
+    N_points= ndb.IntegerProperty()
+    O_points= ndb.IntegerProperty()
+    A_points= ndb.IntegerProperty()
+    C_points= ndb.IntegerProperty()
+    E_points= ndb.IntegerProperty()
+
 class Hobby:
     name= ndb.StringProperty()
     description= ndb.StringProperty()
     image= ndb.BlobProperty()
-    N-points= ndb.IntegerProperty()
-    O-points= ndb.IntegerProperty()
-    A-points= ndb.IntegerProperty()
-    C-points= ndb.IntegerProperty()
-    E-points= ndb.IntegerProperty()
-    
+    N_points= ndb.IntegerProperty()
+    O_points= ndb.IntegerProperty()
+    A_points= ndb.IntegerProperty()
+    C_points= ndb.IntegerProperty()
+    E_points= ndb.IntegerProperty()
+
 class Message:
     user_key= ndb.KeyProperty()
     date_received= ndb.DateProperty()
@@ -31,4 +30,3 @@ class Message:
 class Friend:
     follower_key= ndb.KeyProperty()
     followee_key= ndb.KeyProperty()
-    
