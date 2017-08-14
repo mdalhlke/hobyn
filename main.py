@@ -47,6 +47,8 @@ class LoginHandler(webapp2.RequestHandler):
 class FormHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('form.html')
+        
+        
         self.response.write(template.render())
 
 class UserProfileHandler(webapp2.RequestHandler):
@@ -63,6 +65,30 @@ class AllHobbiesHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('all_hobbies.html')
         self.response.write(template.render())
+class QuestionHandler(webapp2.RequestHandler):
+    def post(self):
+        template = env.get_template('create_question.html')
+        var = {
+            'text':self.request.get('question_text'),
+            'N':self.request.get('N_option'),
+            'O': self.request.get('O_option'),
+            'A': self.request.get('A_option'),
+            'C': self.request.get('C_option'),
+            'E': self.request.get('E_option')
+        }
+        
+        question= Question(question_text=var['text'],
+                          N_option= var['N'],
+                          O_option= var['O'],
+                          A_option= var['A'],
+                          C_option= var['C'],
+                          E_option= var['E'],
+                          )
+        key= question.put()
+        self.response.write(template.render())
+    def get(self):
+        template=env.get_template('pre_create_question.html')
+        self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -71,5 +97,6 @@ app = webapp2.WSGIApplication([
     ('/user_profile', UserProfileHandler),
     ('/hobby', HobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
+    ('/make_question',QuestionHandler),
 
 ], debug=True)
