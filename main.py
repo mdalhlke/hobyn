@@ -14,6 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+from google.appengine.api import users
+from models import *
+from datetime import date
 import webapp2
 import jinja2
 
