@@ -28,8 +28,6 @@ class MainHandler(webapp2.RequestHandler):
         template = env.get_template('home.html')
         self.response.write(template.render())
 
-<<<<<<< HEAD
-=======
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
         template= env.get_template('home.html')
@@ -46,7 +44,6 @@ class LoginHandler(webapp2.RequestHandler):
 
         self.response.write(template.render(var))
 
->>>>>>> 770180a996bc10035d0e34d82222609303eae73f
 class FormHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('form.html')
@@ -75,8 +72,4 @@ app = webapp2.WSGIApplication([
     ('/hobby', HobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 770180a996bc10035d0e34d82222609303eae73f
 ], debug=True)
