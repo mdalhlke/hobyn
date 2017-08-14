@@ -21,7 +21,38 @@
               center: {lat: 32.715736, lng: -117.161087},
               zoom: 8
             });
-          }
+
+            infoWindow = new google.maps.InfoWindow;
+              // Try HTML5 geolocation.
+           if (navigator.geolocation) {
+             navigator.geolocation.getCurrentPosition(function(position) {
+               var pos = {
+                 lat: position.coords.latitude,
+                 lng: position.coords.longitude
+               };
+
+               infoWindow.setPosition(pos);
+               infoWindow.setContent('Location found.');
+               infoWindow.open(map);
+               map.setCenter(pos);
+             }, function() {
+               handleLocationError(true, infoWindow, map.getCenter());
+             });
+           } else {
+             // Browser doesn't support Geolocation
+             handleLocationError(false, infoWindow, map.getCenter());
+           }
+         }
+
+         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+           infoWindow.setPosition(pos);
+           infoWindow.setContent(browserHasGeolocation ?
+                                 'Error: The Geolocation service failed.' :
+                                 'Error: Your browser doesn\'t support geolocation.');
+           infoWindow.open(map);
+         }
+          
+
           </script>
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCec5VIqu2v3PTrtiu3c_K3vmr_0y-FN7U&callback=initMap" async defer></script>
 
@@ -31,7 +62,8 @@
            <img src ="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="profile_pic" width="100">
            <p class= "comments">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
            <!-- <textarea name='comment' id='comment'></textarea><br /> -->
-         <div>
+          </div>
+
       </form>
 
       <footer>
