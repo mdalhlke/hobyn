@@ -1,36 +1,8 @@
-body {
-  background-color: #e6ecf0;
-  margin: 0;
-  height: 100;
-}
-
-footer {
-  border-top: 2px solid black;
-  margin-top: 20px;
-  padding-top: 10px;
-  font-style: italic;
-  font-size: 12px;
-  color: black;
-}
-
-.column{
-    background-color: #9dc3dd;
-    display:inline-block;
-    border-right:3px solid black;
-    border-left:3px solid black;
-    width:50%;
+body{
+    margin:0;
     height:100%;
-    position:absolute;
+    background-color:pink;
 }
-#right{
-    left:50%;
-}
-
-.profile{
-    left:25%;
-}
-
-/*
 div.social{
     display:block;
     background-color:red;
@@ -56,7 +28,9 @@ nav>a {
     position:absolute;
     top:90px;
 }
-
+.profile{
+    left:25%;
+}
 nav #Home {
     font-size:40px;
     display:inline-block;
@@ -86,7 +60,7 @@ nav #Home {
     background-color:yellow;
     text-align: center;
     transform: rotate(-90deg);
-	  transform-origin: left top 0;
+	transform-origin: left top 0;
     display:block;
     width:100px;
     height:50px;
@@ -107,7 +81,6 @@ nav #Home {
     height:400px;
     border:10px solid rgb(210,245,254);
     border-radius:10px;
-<<<<<<< HEAD
 }
 footer{
     background-color:red;
@@ -118,6 +91,3 @@ footer{
     border-top:5px solid green;
 
 }
-=======
-}*/
->>>>>>> 082753b5b82aae0beabf6f31549d4e6e8737bb3e
