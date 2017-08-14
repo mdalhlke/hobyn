@@ -51,18 +51,29 @@ p {
     left:25%;
 }
 
-nav {
-  background-color: #aed0e8;
-  overflow: hidden;
-  display: block;
+.topnav {
+    background-color: #aed0e8;
+    overflow: hidden;
+    display: block;
+    color: black;
 }
 
-nav>a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-  font-size: 18px;
+.topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav a:hover {
+    background-color: #6bb3e5;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #0e517f;
+    color: white;
 }

@@ -11,7 +11,7 @@ class User(ndb.Model):
     C_points= ndb.IntegerProperty()
     E_points= ndb.IntegerProperty()
 
-class Hobby:
+class Hobby(ndb.Model):
     name= ndb.StringProperty()
     description= ndb.StringProperty()
     image= ndb.BlobProperty()
@@ -21,12 +21,21 @@ class Hobby:
     C_points= ndb.IntegerProperty()
     E_points= ndb.IntegerProperty()
 
-class Message:
+class Message(ndb.Model):
     user_key= ndb.KeyProperty()
     date_received= ndb.DateProperty()
     title= ndb.StringProperty()
     content= ndb.StringProperty()
 
-class Friend:
+class Friend(ndb.Model):
     follower_key= ndb.KeyProperty()
     followee_key= ndb.KeyProperty()
+    
+class Question(ndb.Model):
+    question_text= ndb.StringProperty()
+    N_option= ndb.StringProperty()
+    O_option= ndb.StringProperty()
+    A_option= ndb.StringProperty()
+    C_option= ndb.StringProperty()
+    E_option= ndb.StringProperty()
+    
