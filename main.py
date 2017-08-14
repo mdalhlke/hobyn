@@ -47,9 +47,13 @@ class LoginHandler(webapp2.RequestHandler):
 class FormHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('form.html')
+        query = Question.query().order()
+        questions = query.fetch()
+        var = {
+            'questions': questions
+        }
         
-        
-        self.response.write(template.render())
+        self.response.write(template.render(var))
 
 class UserProfileHandler(webapp2.RequestHandler):
     def get(self):
@@ -85,7 +89,7 @@ class QuestionHandler(webapp2.RequestHandler):
                           E_option= var['E'],
                           )
         key= question.put()
-        self.response.write(template.render())
+        self.response.write(template.render(var))
     def get(self):
         template=env.get_template('pre_create_question.html')
         self.response.write(template.render())
