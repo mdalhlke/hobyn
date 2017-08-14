@@ -70,12 +70,23 @@ nav #Home {
 #Home h1{
     padding 0px;
 }
-
+.column{
+    background-color: purple;
+    display:inline-block;
+    border-right:3px solid black;
+    border-left:3px solid black;
+    width:50%;
+    height:100%;
+    position:absolute;
+}
+#right{
+    left:50%;
+}
 .tap{
     background-color:yellow;
     text-align: center;
     transform: rotate(-90deg);
-	transform-origin: left top 0;
+	  transform-origin: left top 0;
     display:block;
     width:100px;
     height:50px;
@@ -96,4 +107,17 @@ nav #Home {
     height:400px;
     border:10px solid rgb(210,245,254);
     border-radius:10px;
+<<<<<<< HEAD
+}
+footer{
+    background-color:red;
+    display:block;
+    width:100%;
+    position:absolute;
+    bottom:-30%;
+    border-top:5px solid green;
+
+}
+=======
 }*/
+>>>>>>> 082753b5b82aae0beabf6f31549d4e6e8737bb3e
