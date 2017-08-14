@@ -36,9 +36,8 @@ img {
 
 .comments{
   float:right;
-  padding:10px;
   width: 600px;
-  margin-right: 40px;
+  margin-right:400px;
 }
 
 #map {
