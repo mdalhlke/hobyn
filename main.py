@@ -44,15 +44,15 @@ class LoginHandler(webapp2.RequestHandler):
 
         self.response.write(template.render(var))
 
-class FormHandler(webapp2.RequestHandler):
+class PersonalityTestHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('form.html')
+        template = env.get_template('personality_test.html')
         query = Question.query().order()
         questions = query.fetch()
         var = {
             'questions': questions
         }
-        
+
         self.response.write(template.render(var))
 
 class UserProfileHandler(webapp2.RequestHandler):
@@ -80,7 +80,7 @@ class QuestionHandler(webapp2.RequestHandler):
             'C': self.request.get('C_option'),
             'E': self.request.get('E_option')
         }
-        
+
         question= Question(question_text=var['text'],
                           N_option= var['N'],
                           O_option= var['O'],
@@ -97,7 +97,7 @@ class QuestionHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/login', LoginHandler),
-    ('/form', FormHandler),
+    ('/personality_test', PersonalityTestHandler),
     ('/user_profile', UserProfileHandler),
     ('/hobby', HobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
