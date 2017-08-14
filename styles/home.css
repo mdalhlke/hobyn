@@ -40,7 +40,6 @@ p {
 	transform: translate(-50%, -50%);
 	position: absolute;
   text-shadow: 5px 5px 4px white;
-
 }
 
 #taketest{
@@ -76,4 +75,31 @@ p {
 .topnav a.active {
     background-color: #0e517f;
     color: white;
+}
+
+button.fab{
+  color:black;
+  font-family:Georgia;
+  font-size: 20px;
+  background-color: #b3ffb3;
+  border:none;
+  border-radius:54px;
+  margin-top: 250px;
+  padding:10px;
+  width:100px;
+  box-shadow: 0px 10px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.fab:hover{
+  background-color: #aed0e8;
+  box-shadow: 0px 15px 20px rgba(173, 216, 230, 0.3);
+  color: #000;
+  transform: translateY(-7px);
+}
+
+div.profilecard {
+  background-color: #6bb3e5;
 }
