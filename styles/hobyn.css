@@ -13,7 +13,7 @@ nav{
     display:block;
     height:160px;
     border-bottom: 5px solid blue;
-    
+
 }
 nav>a {
     text-align: center;
@@ -39,7 +39,7 @@ nav #Home {
     left:50%;
     background-color:green;
     height:160px;
-    width:50%;    
+    width:50%;
 }
 #Home h1{
     padding 0px;
@@ -51,7 +51,7 @@ nav #Home {
     border-left:3px solid black;
     width:50%;
     height:100%;
-    position:absolute;   
+    position:absolute;
 }
 #right{
     left:50%;
@@ -60,7 +60,7 @@ nav #Home {
     background-color:yellow;
     text-align: center;
     transform: rotate(-90deg);
-	transform-origin: left top 0;
+	  transform-origin: left top 0;
     display:block;
     width:100px;
     height:50px;
@@ -87,7 +87,7 @@ footer{
     display:block;
     width:100%;
     position:absolute;
-    bottom:-30%;  
+    bottom:-30%;
     border-top:5px solid green;
-    
+
 }
