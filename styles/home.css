@@ -99,3 +99,7 @@ button.fab{
   color: #000;
   transform: translateY(-7px);
 }
+
+div.profilecard {
+  background-color: #6bb3e5;
+}
