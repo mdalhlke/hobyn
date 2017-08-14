@@ -1,8 +1,36 @@
-body{
-    margin:0;
-    height:100%;
-    background-color:pink;
+body {
+  background-color: #e6ecf0;
+  margin: 0;
+  height: 100;
 }
+
+footer {
+  border-top: 2px solid black;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-style: italic;
+  font-size: 12px;
+  color: black;
+}
+
+.column{
+    background-color: #9dc3dd;
+    display:inline-block;
+    border-right:3px solid black;
+    border-left:3px solid black;
+    width:50%;
+    height:100%;
+    position:absolute;
+}
+#right{
+    left:50%;
+}
+
+.profile{
+    left:25%;
+}
+
+/*
 div.social{
     display:block;
     background-color:red;
@@ -13,7 +41,7 @@ nav{
     display:block;
     height:160px;
     border-bottom: 5px solid blue;
-    
+
 }
 nav>a {
     text-align: center;
@@ -28,9 +56,7 @@ nav>a {
     position:absolute;
     top:90px;
 }
-.profile{
-    left:25%;
-}
+
 nav #Home {
     font-size:40px;
     display:inline-block;
@@ -39,23 +65,12 @@ nav #Home {
     left:50%;
     background-color:green;
     height:160px;
-    width:50%;    
+    width:50%;
 }
 #Home h1{
     padding 0px;
 }
-.column{
-    background-color: purple;
-    display:inline-block;
-    border-right:3px solid black;
-    border-left:3px solid black;
-    width:50%;
-    height:100%;
-    position:absolute;   
-}
-#right{
-    left:50%;
-}
+
 .tap{
     background-color:yellow;
     text-align: center;
@@ -81,13 +96,4 @@ nav #Home {
     height:400px;
     border:10px solid rgb(210,245,254);
     border-radius:10px;
-}
-footer{
-    background-color:red;
-    display:block;
-    width:100%;
-    position:absolute;
-    bottom:-30%;  
-    border-top:5px solid green;
-    
-}
+}*/

@@ -24,6 +24,32 @@ class MainHandler(webapp2.RequestHandler):
         template = env.get_template('home.html')
         self.response.write(template.render())
 
+class FormHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('form.html')
+        self.response.write(template.render())
+
+class UserProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('user_profile.html')
+        self.response.write(template.render())
+
+class HobbyHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('hobby.html')
+        self.response.write(template.render())
+
+class AllHobbiesHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('all_hobbies.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/form', FormHandler),
+    ('/user_profile', UserProfileHandler),
+    ('/hobby', HobbyHandler),
+    ('/all_hobbies', AllHobbiesHandler),
+
+
 ], debug=True)
