@@ -28,7 +28,22 @@ class MainHandler(webapp2.RequestHandler):
         template = env.get_template('home.html')
         self.response.write(template.render())
 
-<<<<<<< HEAD
+class LoginHandler(webapp2.RequestHandler):
+    def get(self):
+        template= env.get_template('home.html')
+        user = users.get_current_user()
+        logout_url= users.create_logout_url('/')
+        login_url= users.create_login_url('/')
+        var ={}
+        if user:
+            var ['greeting'] = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+                (user.nickname(), logout_url))
+        else:
+            var ['greeting'] = ('<a href="%s">Sign in or register</a>.' %
+                login_url)
+
+        self.response.write(template.render(var))
+
 class FormHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('form.html')
@@ -51,30 +66,10 @@ class AllHobbiesHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/login', LoginHandler),
     ('/form', FormHandler),
     ('/user_profile', UserProfileHandler),
     ('/hobby', HobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
 
-
-=======
-class LoginHandler(webapp2.RequestHandler):
-    def get(self):
-        template= env.get_template('home.html')
-        user = users.get_current_user()
-        logout_url= users.create_logout_url('/')
-        login_url= users.create_login_url('/')
-        var ={}
-        if user:
-            var ['greeting'] = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-                (user.nickname(), logout_url))
-        else:
-            var ['greeting'] = ('<a href="%s">Sign in or register</a>.' %
-                login_url)
-
-        self.response.write(template.render(var))
-app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/login', LoginHandler),
->>>>>>> 7fcef24d5e2721995b2d069d066a05748ba1e1c3
 ], debug=True)
