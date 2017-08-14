@@ -30,23 +30,6 @@ img {
   margin: 15px;
 }
 
-.profile_pic{
-  border-radius: 50px
-}
-
-.comments{
-  float:right;
-  width: 600px;
-  margin-right:400px;
-}
-
-#map {
-  height:70%;
-  width: 24%;
-  margin: 15px;
-  padding: 160px;
-}
-
 .topnav {
     background-color: #aed0e8;
     overflow: hidden;

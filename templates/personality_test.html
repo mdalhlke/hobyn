@@ -3,11 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Personality Test</title>
-    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/personality_test.css">
   </head>
   <body>
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/personality_test">Take the test!</a>
+      <a href="/all_hobbies">Browse All Hobbies</a>
+      <a href="/user_profile" class="profile">Profile</a>
+    </div>
+
     <h1>Personality Test</h1>
-    <form action= "/FormHandler" method="get">        
+    <form action= "/PersonalityTestHandler" method="get">
         <div>
             {% for question in questions %}
             <div>
@@ -18,9 +25,9 @@
                 <label><input class="C" type="radio" name="answer">{{question.C_option}}</label><br>
                 <label><input class="E" type="radio" name="answer">{{question.E_option}}</label><br>
             </div>
-            {%endfor%} 
+            {%endfor%}
         </div>
     </form>
-      
+
   </body>
 </html>
