@@ -7,14 +7,19 @@
   </head>
   <body>
     <h1>Personality Test</h1>
-    <form action= "/FormHandler" method="get">
-      <p>You’re shopping online. Would you:</p>
-        <label><input class="C" type="radio" name="answer"> Go through all the products before deciding what to buy</label>
-        <label><input class="E" type="radio" name="answer"> Consult a sales representative before buying</label>
-        <label><input class="A" type= "radio" name="answer"> Read through reviews before buying</label>
-        <label><input class="O" type= "radio" name="answer"> Look for online shopping websites that are less popular</label>
-        <label><input class="N" type= "radio" name="answer"> Buy everything that you like</label>
-
+    <form action= "/FormHandler" method="get">        
+        <div>
+            {% for question in questions %}
+            <div>
+                <label class='field'>{{question.question_text}}</label><br>
+                <label><input class="N" type="radio" name="answer">{{question.N_option}}</label><br>
+                <label><input class="O" type="radio" name="answer">{{question.O_option}}</label><br>
+                <label><input class="A" type="radio" name="answer">{{question.A_option}}</label><br>
+                <label><input class="C" type="radio" name="answer">{{question.C_option}}</label><br>
+                <label><input class="E" type="radio" name="answer">{{question.E_option}}</label><br>
+            </div>
+            {%endfor%} 
+        </div>
     </form>
       
   </body>
