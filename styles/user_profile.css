@@ -1,10 +1,24 @@
-.description{
+h1{
+  text-align: center;
+}
+
+.user_info{
+  border: 1px solid black;
+  border-radius:20px;
+  width: 300px;
+  margin: 20px;
+  padding: 5px;
+  float:left;
+}
+
+.description {
+  border-radius:20px;
   float:right;
   padding:10px;
-  width: 600px;
-  height: 250px;
+  width: 500px;
+  height:350px;
   border: 1px solid black;
-  margin-right: 40px;
+  margin-right: 100px;
 }
 
 body {
@@ -23,7 +37,8 @@ footer {
 }
 
 img {
-  margin: 15px;
+  margin: 5px;
+  border-radius: 20px;
 }
 
 .topnav {
@@ -54,13 +69,27 @@ img {
 }
 
 div.scroll {
+    margin-left: 15px;
+    padding: 5px;
+    display: inline-block;
     width: 300px;
     height: 100px;
     overflow: scroll;
+}
+
+div.userbio {
+  width: 50px;
+  height: 100px;
+  overflow: scroll;
 }
 
 .friends_pic{
   float:left;
   margin-top: 10px;
   border-radius:50px;
+}
+
+.username{
+  display: inline-block;
+  vertical-align: top;
 }
