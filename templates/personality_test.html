@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+value<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -15,19 +15,23 @@
 
   <div class=whitespace>
     <h1>Personality Test</h1>
-    <form action= "/PersonalityTestHandler" method="get">
+    <form action= "/user_profile" method="get">
         <div>
             {% for question in questions %}
+            {% set index= questions.index(question)%}
             <div>
-                <label class='field'>{{question.question_text}}</label><br>
-                <label><input class="N" type="radio" name="answer">{{question.N_option}}</label><br>
-                <label><input class="O" type="radio" name="answer">{{question.O_option}}</label><br>
-                <label><input class="A" type="radio" name="answer">{{question.A_option}}</label><br>
-                <label><input class="C" type="radio" name="answer">{{question.C_option}}</label><br>
-                <label><input class="E" type="radio" name="answer">{{question.E_option}}</label><br>
+                <fieldset id="{{index}}">
+                    <label class='field'>{{question.question_text}}</label><br>
+                    <label><input value="N" type="radio" name="answer_{{index}}">{{question.N_option}}</label><br>
+                    <label><input value="O" type="radio" name="answer_{{index}}">{{question.O_option}}</label><br>
+                    <label><input value="A" type="radio" name="answer_{{index}}">{{question.A_option}}</label><br>
+                    <label><input value="C" type="radio" name="answer_{{index}}">{{question.C_option}}</label><br>
+                    <label><input value="E" type="radio" name="answer_{{index}}">{{question.E_option}}</label><br>
+                </fieldset>
             </div><br>
             {%endfor%}
         </div>
+        <input type="submit">
     </form>
   </div>
     
