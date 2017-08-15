@@ -13,15 +13,17 @@
       <a href="/user_profile" class="profile">Profile</a>
     </div>
 
-    <h1>All Hobbies</h1>
-      <form action= "/all_hobbies" method="get">
-        <div>
-            {% for hobby in hobbies %}
-            <div>
-               <li><label class='field'>{{hobby.name}}</label></li>    
-            </div><br>
-            {%endfor%}
-        </div>
-    </form>
+    <div class=whitespace>
+      <h1>All Hobbies</h1>
+        <form action= "/all_hobbies" method="get">
+          <div>
+              {% for hobby in hobbies|sort(attribute='name') %}
+              <div id={{hobby.name}}>
+                 <li><label class='field'>{{hobby.name}}</label></li>
+              </div><br>
+              {%endfor%}
+          </div>
+      </form>
+    </div>
   </body>
 </html>
