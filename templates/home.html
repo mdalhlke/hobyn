@@ -3,9 +3,10 @@
     <head>
         <title>Hobyn</title>
         <link rel="stylesheet" href="styles/home.css">
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="scripts/home.js"></script>
+        <meta name="google-signin-client_id" content="268919263093-llp26d3noivqmjqp1kpsq0s5k54phehl.apps.googleusercontent.com">
     </head>
     <body>
       <h1> Hobyn </h1>
@@ -14,6 +15,8 @@
             <a href="/personality_test">Take the test!</a>
             <a href="/all_hobbies">Browse All Hobbies</a>
             <a href="/user_profile" class="profile">Profile</a>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <a href="#" onclick="signOut();">Sign out</a>
         </div>
 
         <div class="column" id="random">

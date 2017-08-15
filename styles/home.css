@@ -106,3 +106,8 @@ p {
 div.profilecard {
   background-color: white;
 }
+
+.g-signin2{
+  position: relative;
+  float: right;
+}
