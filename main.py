@@ -58,6 +58,11 @@ class PersonalityTestHandler(webapp2.RequestHandler):
 class UserProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('user_profile.html')
+        for i in range(0, len(Question.query().fetch())):
+            value=self.request.get("answer_"+str(i))
+        
+        self.response.write(self.request.get("answer_0"))
+            
         self.response.write(template.render())
 
 class HobbyHandler(webapp2.RequestHandler):
