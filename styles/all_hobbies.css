@@ -42,11 +42,20 @@ footer {
 
 .whitespace {
    width: 900px;
-   margin: 0 auto;
+   margin: 5px auto 0 auto;
    background-color: #b7d2e5;
-   padding-left: 3%;
+   padding: 2px 3% 30px 3%;
   }
 
 h1 {
   text-align: center;
+}
+
+.hobby {
+  margin-bottom: 20px;
+}
+
+.hobbyDescription {
+  display: none;
+  margin: 5px 5px 20px 35px;
 }
