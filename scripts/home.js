@@ -13,5 +13,3 @@ function signOut() {
       console.log('User signed out.');
     });
   }
-
-$(document).ready(setUp);
