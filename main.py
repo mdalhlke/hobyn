@@ -36,6 +36,7 @@ class LoginHandler(webapp2.RequestHandler):
         login_url= users.create_login_url('/')
         var ={}
         if user:
+            
             var ['greeting'] = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                 (user.nickname(), logout_url))
         else:
@@ -71,10 +72,15 @@ class UserProfileHandler(webapp2.RequestHandler):
                 C=C +1
             else:
                 E=E +1
-                
-        
-        self.response.write(N)
-            
+        username=get_current_user().nickname()
+        if user:
+            user=User.query(User.username== username).get()
+            user.N_points=N
+            user.O_points=O
+            user.A_points=A
+            user.C_points=C
+            user.E_points=E
+            user.put
         self.response.write(template.render())
 
 class HobbyHandler(webapp2.RequestHandler):
