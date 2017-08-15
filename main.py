@@ -86,7 +86,11 @@ class HobbyHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('pre_create_hobby.html')
         self.response.write(template.render())
-        
+
+class PersonalHobbyHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('hobby.html')
+        self.response.write(template.render())
 
 class AllHobbiesHandler(webapp2.RequestHandler):
     def get(self):
@@ -98,7 +102,7 @@ class AllHobbiesHandler(webapp2.RequestHandler):
             'hobbies': hobbies
         }
         self.response.write(template.render(var))
-        
+
 class QuestionHandler(webapp2.RequestHandler):
     def post(self):
         template = env.get_template('create_question.html')
@@ -130,6 +134,7 @@ app = webapp2.WSGIApplication([
     ('/personality_test', PersonalityTestHandler),
     ('/user_profile', UserProfileHandler),
     ('/hobby', HobbyHandler),
+    ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
 
