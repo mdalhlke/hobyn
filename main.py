@@ -91,8 +91,9 @@ class HobbyHandler(webapp2.RequestHandler):
 class AllHobbiesHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('all_hobbies.html')
-        query = Hobby.query().order(Hobby.name)
+        query = Hobby.query().order()
         hobbies = query.fetch()
+        print(hobbies)
         var = {
             'hobbies': hobbies
         }
