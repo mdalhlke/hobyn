@@ -23,7 +23,9 @@
               {% for hobby in hobbies|sort(attribute='name') %}
               <div>
                  <li class=hobby><label class='field'>{{hobby.name}}</label>
-                   <div class=hobbyDescription> {{hobby.description}} </div>
+                   <div class=hobbyDescription> {{hobby.description}}
+                        <br><a id="find" class=link href="">Find Out More</a>
+                   </div>
                  </li>
               </div>
               {%endfor%}
