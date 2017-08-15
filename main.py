@@ -58,10 +58,22 @@ class PersonalityTestHandler(webapp2.RequestHandler):
 class UserProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('user_profile.html')
+        N,O,A,C,E=0,0,0,0,0
         for i in range(0, len(Question.query().fetch())):
             value=self.request.get("answer_"+str(i))
+            if value=="N":
+                N= N+1
+            elif value=="O":
+                O=O +1
+            elif value=="A":
+                A=A +1
+            elif value=="C":
+                C=C +1
+            else:
+                E=E +1
+                
         
-        self.response.write(self.request.get("answer_0"))
+        self.response.write(N)
             
         self.response.write(template.render())
 
