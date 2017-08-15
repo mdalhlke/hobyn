@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>Hobby</title>
     <link rel="stylesheet" href="styles/hobby.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src = "scripts/home.js"></script>
   </head>
   <body>
 
@@ -20,16 +20,69 @@
       <img src = "https://thumbs.dreamstime.com/z/hobby-icons-28567715.jpg" width="300" height="300">
       <p class= "description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
-          <script>
-          var map;
-          function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
+      <script>
+          function initAutocomplete() {
+            var map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: 32.715736, lng: -117.161087},
-              zoom: 8
+              zoom: 8,
+              mapTypeId: 'roadmap'
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            map.addListener('bounds_changed', function() {
+              searchBox.setBounds(map.getBounds());
+            });
+            var markers = [];
+
+            searchBox.addListener('places_changed', function() {
+              var places = searchBox.getPlaces();
+
+              if (places.length == 0) {
+                return;
+              }
+
+              markers.forEach(function(marker) {
+                marker.setMap(null);
+              });
+              markers = [];
+
+              var bounds = new google.maps.LatLngBounds();
+              places.forEach(function(place) {
+                if (!place.geometry) {
+                  console.log("Returned place contains no geometry");
+                  return;
+                }
+                var icon = {
+                  url: place.icon,
+                  size: new google.maps.Size(71, 71),
+                  origin: new google.maps.Point(0, 0),
+                  anchor: new google.maps.Point(17, 34),
+                  scaledSize: new google.maps.Size(25, 25)
+                };
+
+                markers.push(new google.maps.Marker({
+                  map: map,
+                  icon: icon,
+                  title: place.name,
+                  position: place.geometry.location
+                }));
+
+                if (place.geometry.viewport) {
+
+                  bounds.union(place.geometry.viewport);
+                } else {
+                  bounds.extend(place.geometry.location);
+                }
+              });
+              map.fitBounds(bounds);
             });
 
-            infoWindow = new google.maps.InfoWindow;
               // Try HTML5 geolocation.
            if (navigator.geolocation) {
              navigator.geolocation.getCurrentPosition(function(position) {
@@ -61,8 +114,7 @@
 
 
           </script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCec5VIqu2v3PTrtiu3c_K3vmr_0y-FN7U&callback=initMap" async defer></script>
-
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnzCtZmcSh7tPb0DkFdtXTUOBsDXbXSiU&libraries=places&callback=initAutocomplete" async defer></script>
       <form method="post">
         <h1>Comments</h1>
          <div>
