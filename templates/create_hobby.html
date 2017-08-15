@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Creator</title>
+  </head>
+  <body>
+      <h1> create_hobby</h1>
+      <p>You created this hobby: {{name}}<br>{{description}}<br>{{N}}<br>{{O}}<br>{{A}}<br>{{C}}<br>{{E}}</p>
+    <form action="/hobby" method="post">
+      <p>
+        Name:<input type="text" name="name">
+      </p>
+      <p>
+        Write a brief description of the hobby:<input type="text" name="description">  
+      </p>
+      <p>
+        N-points:<input type="number" name="N_points">
+      </p>
+      <p>
+        O-points:<input type="number" name="O_points">
+      </p>
+      <p>
+        A-points:<input type="number" name="A_points">
+      </p>
+      <p>
+        C-points:<input type="number" name="C_points">
+      </p>
+      <p>
+        E-points:<input type="number" name="E_points">
+      </p>
+      
+      <p>
+        <input type='submit'>
+      </p>
+    </form> 
+  </body>
+</html>

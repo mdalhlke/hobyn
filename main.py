@@ -61,14 +61,43 @@ class UserProfileHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class HobbyHandler(webapp2.RequestHandler):
+    def post(self):
+        template = env.get_template('create_hobby.html')
+        var = {
+            'name':self.request.get('name'),
+            'N': int(self.request.get('N_points')),
+            'O': int(self.request.get('O_points')),
+            'A': int(self.request.get('A_points')),
+            'C': int(self.request.get('C_points')),
+            'E': int(self.request.get('E_points')),
+            'description': self.request.get('description'),
+        }
+
+        hobby= Hobby(name=var['name'],
+                          N_points= var['N'],
+                          O_points= var['O'],
+                          A_points= var['A'],
+                          C_points= var['C'],
+                          E_points= var['E'],
+                          description= var['description'],
+                          )
+        key= hobby.put()
+        self.response.write(template.render(var))
     def get(self):
-        template = env.get_template('hobby.html')
+        template=env.get_template('pre_create_hobby.html')
         self.response.write(template.render())
+        
 
 class AllHobbiesHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('all_hobbies.html')
-        self.response.write(template.render())
+        query = Hobby.query().order(Hobby.name)
+        hobbies = query.fetch()
+        var = {
+            'hobbies': hobbies
+        }
+        self.response.write(template.render(var))
+        
 class QuestionHandler(webapp2.RequestHandler):
     def post(self):
         template = env.get_template('create_question.html')

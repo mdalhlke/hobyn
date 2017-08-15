@@ -14,6 +14,21 @@
     </div>
 
     <h1>All Hobbies</h1>
+      <form action= "/all_hobbies" method="get">
+        <div>
+            {% for question in questions %}
+            <div>
+                <label class='field'>{{question.question_text}}</label><br>
+                <label><input class="N" type="radio" name="answer">{{question.N_option}}</label><br>
+                <label><input class="O" type="radio" name="answer">{{question.O_option}}</label><br>
+                <label><input class="A" type="radio" name="answer">{{question.A_option}}</label><br>
+                <label><input class="C" type="radio" name="answer">{{question.C_option}}</label><br>
+                <label><input class="E" type="radio" name="answer">{{question.E_option}}</label><br>
+            </div><br>
+            {%endfor%}
+        </div>
+    </form>
+  </div>
 
   </body>
 </html>
