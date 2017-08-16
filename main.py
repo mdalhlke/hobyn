@@ -91,7 +91,7 @@ class UserProfileHandler(webapp2.RequestHandler):
             self.response.write("no user logged in")
         self.response.write(template.render())
 
-class HobbyHandler(webapp2.RequestHandler):
+class MakeHobbyHandler(webapp2.RequestHandler):
     def post(self):
         template = env.get_template('create_hobby.html')
         var = {
@@ -163,7 +163,7 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/personality_test', PersonalityTestHandler),
     ('/user_profile', UserProfileHandler),
-    ('/hobby', HobbyHandler),
+    ('/make_hobby', MakeHobbyHandler),
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
