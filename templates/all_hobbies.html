@@ -18,6 +18,7 @@
 
     <div class=whitespace>
       <h1>All Hobbies</h1>
+      <h4>Click on a hobby to see its description! </h4>
         <form action= "/all_hobbies" method="get">
           <div>
               {% for hobby in hobbies|sort(attribute='name') %}
