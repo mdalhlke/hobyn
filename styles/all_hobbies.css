@@ -69,9 +69,11 @@ h4 {
   border-color: #3e76c1;
   padding: 6px;
   font-style: oblique;
+  height: 130px;
+  position: relative;
 }
 
-#find{
+#find_out_more{
   font-size:14px;
   padding:10px 12px;
   display:inline-block;
@@ -84,13 +86,14 @@ h4 {
   cursor:pointer; user-select:none;
   transition:0.4s ease;
   background:#1c55a0;
-  position: relative;
-  left: 700px;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
   color: white;
   text-decoration: none;
 }
 
-#find:hover {
+#find_out_more:hover {
   transform:translateY(-3px);
   box-shadow:0 6px 0 rgba(0,0,0,0.1),
   inset 0 0 1px rgba(255,255,255,0.4);
