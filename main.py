@@ -120,10 +120,23 @@ class MakeHobbyHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class PersonalHobbyHandler(webapp2.RequestHandler):
+    def post(self):
+        template = env.get_template('hobby.html')
+        user = User.query(User.email== users.get_current_user().email()).get()
+        message = Message(
+           content = self.request.get('content'),
+           user_key = user.key)
+        key = message.put()
+        self.redirect("/personal_hobby")
+        self.response.write(template.render())
     def get(self):
         template = env.get_template('hobby.html')
-        self.response.write(template.render())
-
+        query = Message.query()
+        query_results = query.fetch()
+        vars = {
+            "content": query_results
+        }
+        self.response.write(template.render(vars))
 
 class AllHobbiesHandler(webapp2.RequestHandler):
     def get(self):

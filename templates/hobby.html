@@ -116,12 +116,17 @@
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnzCtZmcSh7tPb0DkFdtXTUOBsDXbXSiU&libraries=places&callback=initAutocomplete" async defer></script>
 
         <h1>Comments</h1>
+        {% for message in content %}
+          <p>{{ message.content }}<p>
+        {% endfor %}
          <div>
            <img src ="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="profile_pic" width="100">
-           <form>
-             <textarea rows="4" cols="50" placeholder="Your comment goes here..."></textarea>
-             <input type="submit">
+
+           <form action="/personal_hobby" method="post">
+             <textarea rows="4" cols="50" type="text" name="content" placeholder="Your comment goes here..."></textarea>
+             <input type="submit" value="Post">
            </form>
+
          </div>
 
       <footer>

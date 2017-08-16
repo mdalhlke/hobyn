@@ -30,7 +30,7 @@ class Message(ndb.Model):
 class Friend(ndb.Model):
     follower_key= ndb.KeyProperty()
     followee_key= ndb.KeyProperty()
-    
+
 class Question(ndb.Model):
     question_text= ndb.StringProperty()
     N_option= ndb.StringProperty()
@@ -38,4 +38,3 @@ class Question(ndb.Model):
     A_option= ndb.StringProperty()
     C_option= ndb.StringProperty()
     E_option= ndb.StringProperty()
-    
