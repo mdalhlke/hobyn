@@ -64,16 +64,15 @@ p {
 }
 
 .topnav {
-    background-color: #aed0e8;
+    background-color: white;
     overflow: hidden;
     display: block;
-    color: black;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: black;
+    color: #6bb3e5;
     text-align: center;
     padding: 21px;
     text-decoration: none;
