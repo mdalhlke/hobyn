@@ -32,6 +32,14 @@ footer {
   overflow: hidden;
 }
 
+#img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
 p {
   font-family: Georgia;
 	text-transform: uppercase;
