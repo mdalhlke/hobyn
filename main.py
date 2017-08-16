@@ -33,7 +33,6 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             var ['greeting'] = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                 (user.nickname(), logout_url))
-            self.response.write('<p>it works</p>')
         else:
             var ['greeting'] = ('<a href="%s">Sign in or register</a>.' %
                 login_url)
@@ -118,48 +117,46 @@ class MakeHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('pre_create_hobby.html')
         self.response.write(template.render())
-class MessageHandler(webapp2.RequestHandler):
-    def post(self):
-        template= env.get_template('hobby.html')
-        user=user.query(User.email==users.get_current_user().email()).get()
-        message=Message(
-            content= self.request.get('content'),
-            user_key = user.key
-        )
-        self.redirect("/personal_hobby")
-    def get(self):
-        template= env.get_template('hobby.html')
-        query = Message.query()
-        query_results=query.fetch()
-        var['content']= query_results
-        self.response.write(template.render())
         
 class PersonalHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template= env.get_template('hobby.html')
-        user= User.query(User.email==users.get_current_user().email()).get()
+        #name
         var={
             'name':self.request.get('name')
         }
-        message=Message(
-            content= self.request.get('content'),
-            user_key = user.key)
-        key= message.put()
-        self.redirect("/personal_hobby")
-        self.response.write(template.render())
+        hobby=Hobby.query(Hobby.name==var['name']).get()
+        var['description']=hobby.description
+        
+        #Message
+        query = Message.query()
+        query_results=query.fetch()
+        var['content']= query_results
+        
+        self.response.write(template.render(var))
         
     def post(self):
         template= env.get_template('hobby.html')
+        #name
         var={
             'name':self.request.get('name')    
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
-        #Message(content="ha",user_key=User.query(User.email==users.get_current_user().email()).get().key)
         
+        #Message
+        user= User.query(User.email==users.get_current_user().email()).get()
+        
+        if self.request.get('content'): 
+            message=Message(
+                content= self.request.get('content'),
+                user_key = user.key)
+            key= message.put()
+            self.redirect("/personal_hobby?name="+var['name'])
         query = Message.query()
         query_results=query.fetch()
         var['content']= query_results
+        
         self.response.write(template.render(var))
 
 
