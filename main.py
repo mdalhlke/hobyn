@@ -25,11 +25,6 @@ env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('home.html')
-        self.response.write(template.render())
-
-class LoginHandler(webapp2.RequestHandler):
-    def get(self):
         template= env.get_template('home.html')
         user = users.get_current_user()
         logout_url= users.create_logout_url('/')
@@ -38,9 +33,21 @@ class LoginHandler(webapp2.RequestHandler):
         if user:
             var ['greeting'] = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                 (user.nickname(), logout_url))
+            self.response.write('<p>it works</p>')
         else:
             var ['greeting'] = ('<a href="%s">Sign in or register</a>.' %
                 login_url)
+        if users.get_current_user():
+            email=users.get_current_user().email()
+            user=User.query(User.email==email).fetch()
+            if user:
+                pass
+            else:
+                user= User(
+                    name=users.get_current_user().nickname(),
+                    email=users.get_current_user().email()
+                    )
+                user.put()
 
         self.response.write(template.render(var))
 
@@ -71,10 +78,24 @@ class UserProfileHandler(webapp2.RequestHandler):
                 C=C +1
             else:
                 E=E +1
+<<<<<<< HEAD
 
 
         self.response.write(N)
 
+=======
+        user=users.get_current_user()
+        if user:
+            user=User.query(User.email== user.email()).get()
+            user.N_points=N
+            user.O_points=O
+            user.A_points=A
+            user.C_points=C
+            user.E_points=E
+            user.put
+        else:
+            self.response.write("no user logged in")
+>>>>>>> f498a6f5ca2ac307644a7967f3e63e0900cea59e
         self.response.write(template.render())
 
 class HobbyHandler(webapp2.RequestHandler):
@@ -148,7 +169,6 @@ class QuestionHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/login', LoginHandler),
     ('/personality_test', PersonalityTestHandler),
     ('/user_profile', UserProfileHandler),
     ('/hobby', HobbyHandler),

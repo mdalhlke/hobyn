@@ -9,13 +9,14 @@
         <meta name="google-signin-client_id" content="268919263093-fv5ta94qcn9qdu7gmvmid6h2ht6bur8n.apps.googleusercontent.com">
     </head>
     <body>
+        <h1>{{greeting}}</h1>
       <h1> Hobyn </h1>
         <div class="topnav">
             <a href="/">Home</a>
             <a href="/personality_test">Take the test!</a>
             <a href="/all_hobbies">Browse All Hobbies</a>
             <a href="/user_profile" class="profile">Profile</a>
-            <a href="#" onclick="signOut();" class="logout">Sign out</a>
+            <a href="/" onclick="signOut();" class="logout">Sign out</a>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
             <img src ="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="user_pic" width="60">
         </div>
