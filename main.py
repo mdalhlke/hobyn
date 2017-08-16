@@ -78,12 +78,7 @@ class UserProfileHandler(webapp2.RequestHandler):
                 C=C +1
             else:
                 E=E +1
-<<<<<<< HEAD
 
-
-        self.response.write(N)
-
-=======
         user=users.get_current_user()
         if user:
             user=User.query(User.email== user.email()).get()
@@ -95,7 +90,6 @@ class UserProfileHandler(webapp2.RequestHandler):
             user.put
         else:
             self.response.write("no user logged in")
->>>>>>> f498a6f5ca2ac307644a7967f3e63e0900cea59e
         self.response.write(template.render())
 
 class MakeHobbyHandler(webapp2.RequestHandler):
