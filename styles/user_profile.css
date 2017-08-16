@@ -1,6 +1,7 @@
 h1{
-  font-family: Sedgwick Ave;
+  font-family: Arvo;
   text-align: center;
+  font-size: 40px;
 }
 
 .user_info{
@@ -44,18 +45,17 @@ img {
 }
 
 .topnav {
-    background-color: #aed0e8;
+    background-color: white;
     overflow: hidden;
     display: block;
-    color: black;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: black;
+    color: #6bb3e5;
     text-align: center;
-    padding: 14px;
+    padding: 21px;
     text-decoration: none;
     font-size: 18px;
 }
