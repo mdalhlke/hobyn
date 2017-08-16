@@ -122,7 +122,13 @@ class MakeHobbyHandler(webapp2.RequestHandler):
 class PersonalHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('hobby.html')
-        self.response.write(template.render())
+        var={
+            'name':self.request.get('name')    
+        }
+        hobby=Hobby.query(Hobby.name==var['name']).get()
+        var['description']=hobby.description;
+        self.response.write(template.render(var))
+        
 
 
 class AllHobbiesHandler(webapp2.RequestHandler):
