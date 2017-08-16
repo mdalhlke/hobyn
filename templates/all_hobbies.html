@@ -24,7 +24,7 @@
               <div>
                  <li class=hobby><label class='field'>{{hobby.name}}</label>
                    <div class=hobbyDescription> {{hobby.description}}
-                       <form action="/personal_hobby" method="get">
+                       <form action="/personal_hobby" method="post">
                            <input type="hidden" name="name" value="{{hobby.name}}">
                             <input type="submit" id="find" value="Find Out More">      
                        </form>

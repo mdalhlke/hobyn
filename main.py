@@ -120,15 +120,29 @@ class MakeHobbyHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class PersonalHobbyHandler(webapp2.RequestHandler):
+    def post(self):
+        template= env.get_template('hobby.html')
+        user= User.query(User.email==users.get_current_user().email()).get()
+        message=Message(
+            content= self.request.get('content'),
+            user_key = user.key)
+        key= message.put()
+        self.redirect("/personal_hobby")
+        self.response.write(template.render())
+        
     def get(self):
-        template = env.get_template('hobby.html')
+        template= env.get_template('hobby.html')
         var={
             'name':self.request.get('name')    
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
-        var['description']=hobby.description;
-        self.response.write(template.render(var))
+        var['description']="hobby.description"
+        #Message(content="ha",user_key=User.query(User.email==users.get_current_user().email()).get().key)
         
+        query = Message.query()
+        query_results=query.fetch()
+        var['content']= query_results
+        self.response.write(template.render(var))
 
 
 class AllHobbiesHandler(webapp2.RequestHandler):
@@ -167,17 +181,17 @@ class QuestionHandler(webapp2.RequestHandler):
         template=env.get_template('pre_create_question.html')
         self.response.write(template.render())
 
-class HobbyHandler(webapp2.RequestHandler):
-    def get(self):
-        template = env.get_template('hobby.html')
-        hobby_name = self.request.get('name')
-        hobby = Hobby.query(Hobby.name == hobby_name).fetch()
-        hobby_description = hobby.description
-        var = {
-            'hobby': hobby.name,
-            'hobby_description': hobby.description
-        }
-        self.response.write(template.render(var))
+#class HobbyHandler(webapp2.RequestHandler):
+    #def get(self):
+      #  template = env.get_template('hobby.html')
+      #  hobby_name = self.request.get('name')
+      #  hobby = Hobby.query(Hobby.name == hobby_name).fetch()
+      #  hobby_description = hobby.description
+      #  var = {
+      #      'hobby': hobby.name,
+      #      'hobby_description': hobby.description
+      #  }
+      #  self.response.write(template.render(var))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -187,6 +201,6 @@ app = webapp2.WSGIApplication([
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
-    ('/hobby',HobbyHandler),
+    #('/hobby',HobbyHandler),
 
 ], debug=True)
