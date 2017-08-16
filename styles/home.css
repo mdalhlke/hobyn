@@ -25,7 +25,9 @@ footer {
     height:50%;
     position:absolute;
     text-align: center;
-	  background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);
+    background: #8fb8bf;
+    background: radial-gradient(#aad1e0, #516ac6);
+    border-radius: 6px;
 }
 
 p {

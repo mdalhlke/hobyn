@@ -49,6 +49,12 @@ footer {
 
 h1 {
   text-align: center;
+  margin-bottom: 0;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 0px;
 }
 
 .hobby {
@@ -58,4 +64,34 @@ h1 {
 .hobbyDescription {
   display: none;
   margin: 5px 5px 20px 35px;
+  border-style: dotted;
+  border-color: #3e76c1;
+  padding: 6px;
+  font-style: oblique;
+}
+
+#find{
+  font-size:14px;
+  padding:10px 12px;
+  display:inline-block;
+  margin:5px;
+  border-radius:6px;
+  border:solid rgba(0,0,0,0.2);
+  border-width:1px 1px 5px;
+  box-shadow:0 5px 0 rgba(0,0,0,0.1),
+  inset 0 0 3px rgba(255,255,255,0.3);
+  cursor:pointer; user-select:none;
+  transition:0.4s ease;
+  background:#1c55a0;
+  position: relative;
+  left: 700px;
+  color: white;
+  text-decoration: none;
+}
+
+#find:hover {
+  transform:translateY(-3px);
+  box-shadow:0 6px 0 rgba(0,0,0,0.1),
+  inset 0 0 1px rgba(255,255,255,0.4);
+  border-bottom-width:8px;
 }

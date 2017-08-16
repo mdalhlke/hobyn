@@ -18,12 +18,15 @@
 
     <div class=whitespace>
       <h1>All Hobbies</h1>
+      <h4>Click on a hobby to see its description! </h4>
         <form action= "/all_hobbies" method="get">
           <div>
               {% for hobby in hobbies|sort(attribute='name') %}
               <div>
                  <li class=hobby><label class='field'>{{hobby.name}}</label>
-                   <div class=hobbyDescription> {{hobby.description}} </div>
+                   <div class=hobbyDescription> {{hobby.description}}
+                        <br><a id="find" class=link href="">Find Out More</a>
+                   </div>
                  </li>
               </div>
               {%endfor%}
