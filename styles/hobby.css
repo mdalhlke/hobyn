@@ -145,3 +145,7 @@ img {
 #target {
   width: 345px;
 }
+
+.hobby_name{
+  text-transform: capitalize;
+}
