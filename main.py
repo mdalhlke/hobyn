@@ -161,6 +161,18 @@ class QuestionHandler(webapp2.RequestHandler):
         template=env.get_template('pre_create_question.html')
         self.response.write(template.render())
 
+class HobbyHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('hobby.html')
+        hobby_name = self.request.get('name')
+        hobby = Hobby.query(Hobby.name == hobby_name).fetch()
+        hobby_description = hobby.description
+        var = {
+            'hobby': hobby.name,
+            'hobby_description': hobby.description
+        }
+        self.response.write(template.render(var))
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/personality_test', PersonalityTestHandler),
@@ -169,5 +181,6 @@ app = webapp2.WSGIApplication([
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
+    ('/hobby',HobbyHandler),
 
 ], debug=True)
