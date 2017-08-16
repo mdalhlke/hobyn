@@ -20,6 +20,7 @@ from models import *
 from datetime import date
 import webapp2
 import jinja2
+from google.appengine.api import users
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -117,7 +118,7 @@ class MakeHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('pre_create_hobby.html')
         self.response.write(template.render())
-        
+
 class PersonalHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template= env.get_template('hobby.html')
@@ -127,27 +128,27 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
-        
+
         #Message
         query = Message.query(Message.hobby_key == hobby.key)
         query_results=query.fetch()
         var['content']= query_results
-        
+
         self.response.write(template.render(var))
-        
+
     def post(self):
         template= env.get_template('hobby.html')
         #name
         var={
-            'name':self.request.get('name')    
+            'name':self.request.get('name')
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
-        
+
         #Message
         user= User.query(User.email==users.get_current_user().email()).get()
-        
-        if self.request.get('content'): 
+
+        if self.request.get('content'):
             message=Message(
                 content= self.request.get('content'),
                 user_key = user.key,
@@ -158,7 +159,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         query = Message.query(Message.hobby_key == hobby.key)
         query_results=query.fetch()
         var['content']= query_results
-        
+
         self.response.write(template.render(var))
 
 
