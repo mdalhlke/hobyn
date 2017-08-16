@@ -18,16 +18,26 @@ footer {
 }
 
 .column{
-    display:inline-block;
-    border-right:3px solid black;
-    border-left:3px solid black;
-    width:50%;
-    height:50%;
-    position:absolute;
-    text-align: center;
-    background: #8fb8bf;
-    background: radial-gradient(#aad1e0, #516ac6);
-    border-radius: 6px;
+  display:inline-block;
+  border-right:3px solid black;
+  border-left:3px solid black;
+  width:50%;
+  height:50%;
+  position:absolute;
+  text-align: center;
+  background: #8fb8bf;
+  background: radial-gradient(#aad1e0, #516ac6);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.column img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 p {
@@ -41,7 +51,8 @@ p {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	position: absolute;
-  text-shadow: 5px 5px 4px white;
+  text-shadow: 5px 5px 4px black;
+  color: white;
 }
 
 #taketest{
