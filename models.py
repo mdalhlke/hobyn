@@ -24,6 +24,7 @@ class Hobby(ndb.Model):
 
 class Message(ndb.Model):
     user_key= ndb.KeyProperty()
+    hobby_key= ndb.KeyProperty()
     date_received= ndb.DateProperty()
     title= ndb.StringProperty()
     content= ndb.StringProperty()
