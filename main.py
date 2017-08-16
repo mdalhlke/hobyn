@@ -165,11 +165,9 @@ class HobbyHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('hobby.html')
         hobby_name = self.request.get('name')
-        hobby = Hobby.query(Hobby.name == hobby_name).fetch()
-        hobby_description = hobby.description
+        hobby = Hobby.query(Hobby.name == hobby_name).get()
         var = {
-            'hobby': hobby.name,
-            'hobby_description': hobby.description
+            'hobby': hobby,
         }
         self.response.write(template.render(var))
 
