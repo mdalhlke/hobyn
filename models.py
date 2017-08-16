@@ -1,8 +1,9 @@
 from google.appengine.ext import ndb
+
 class User(ndb.Model):
     name= ndb.StringProperty()
     email= ndb.StringProperty()
-    avatar= ndb.BlobProperty()
+    blob_key = ndb.BlobKeyProperty()
     date_created= ndb.DateProperty()
     friends= ndb.StringProperty()
     N_points= ndb.IntegerProperty()
