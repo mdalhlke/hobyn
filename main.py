@@ -71,10 +71,10 @@ class UserProfileHandler(webapp2.RequestHandler):
                 C=C +1
             else:
                 E=E +1
-                
-        
+
+
         self.response.write(N)
-            
+
         self.response.write(template.render())
 
 class HobbyHandler(webapp2.RequestHandler):
@@ -108,6 +108,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('hobby.html')
         self.response.write(template.render())
+
 
 class AllHobbiesHandler(webapp2.RequestHandler):
     def get(self):
