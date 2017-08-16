@@ -32,11 +32,9 @@ class MainHandler(webapp2.RequestHandler):
         login_url= users.create_login_url('/')
         var ={}
         if user:
-            var ['greeting'] = ('Welcome, %s! (<a href="%s">sign out</a>)' %
-                (user.nickname(), logout_url))
+            var ['greeting'] = ('<a href="%s">Sign out</a>' % logout_url)
         else:
-            var ['greeting'] = ('<a href="%s">Sign in or register</a>.' %
-                login_url)
+            var ['greeting'] = ('<a href="%s">Sign In or Register</a>' % login_url)
         if users.get_current_user():
             email=users.get_current_user().email()
             user=User.query(User.email==email).fetch()
@@ -63,7 +61,7 @@ class PersonalityTestHandler(webapp2.RequestHandler):
         self.response.write(template.render(var))
 
 class UserProfileHandler(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template = env.get_template('user_profile.html')
         N,O,A,C,E=0,0,0,0,0
         for i in range(0, len(Question.query().fetch())):
@@ -78,7 +76,6 @@ class UserProfileHandler(webapp2.RequestHandler):
                 C=C +1
             else:
                 E=E +1
-
         user=users.get_current_user()
         if user:
             user=User.query(User.email== user.email()).get()
@@ -87,9 +84,13 @@ class UserProfileHandler(webapp2.RequestHandler):
             user.A_points=A
             user.C_points=C
             user.E_points=E
-            user.put
+            user.put()
         else:
             self.response.write("no user logged in")
+        self.response.write(template.render())
+    def get(self):
+        template= env.get_template('user_profile.html')
+        
         self.response.write(template.render())
 
 class MakeHobbyHandler(webapp2.RequestHandler):
@@ -117,6 +118,7 @@ class MakeHobbyHandler(webapp2.RequestHandler):
         self.response.write(template.render(var))
     def get(self):
         template=env.get_template('pre_create_hobby.html')
+        self.response.write("I")
         self.response.write(template.render())
 
 class PersonalHobbyHandler(webapp2.RequestHandler):
