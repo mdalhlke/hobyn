@@ -129,7 +129,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         var['description']=hobby.description
         
         #Message
-        query = Message.query()
+        query = Message.query(Message.hobby_key == hobby.key)
         query_results=query.fetch()
         var['content']= query_results
         
@@ -150,10 +150,12 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         if self.request.get('content'): 
             message=Message(
                 content= self.request.get('content'),
-                user_key = user.key)
+                user_key = user.key,
+                hobby_key= hobby.key
+            )
             key= message.put()
             self.redirect("/personal_hobby?name="+var['name'])
-        query = Message.query()
+        query = Message.query(Message.hobby_key == hobby.key)
         query_results=query.fetch()
         var['content']= query_results
         
