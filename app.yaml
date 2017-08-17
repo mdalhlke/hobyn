@@ -5,15 +5,20 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
+- url: /secure_api/.*
+  script: api_handler.app
+  login: required
+  auth_fail_action: unauthorized
+
+- url: /styles
+  static_dir: styles
 
 - url: /scripts
   static_dir: scripts
 
-- url: /styles
-  static_dir: styles
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
 
 - url: .*
   script: main.app
