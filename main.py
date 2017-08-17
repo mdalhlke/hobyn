@@ -62,18 +62,6 @@ class PersonalityTestHandler(webapp2.RequestHandler):
         self.response.write(template.render(var))
 
 class UserProfileHandler(webapp2.RequestHandler):
-    def sort_insertion(my_list):
-        for i in range(1,len(my_list)):
-            val_current = my_list[i]
-            pos = i
-            # check backwards through sorted list for proper pos of val_current
-            while((pos > 0) and (my_list[pos-1] > val_current)):
-                my_list[pos] = my_list[pos-1]
-                pos = pos-1
-            if pos != i:
-                my_list[pos] = val_current
-        return my_list
-
     def post(self):
         template = env.get_template('user_profile.html')
         N,O,A,C,E=0,0,0,0,0
@@ -136,6 +124,7 @@ class MakeHobbyHandler(webapp2.RequestHandler):
             'C': int(self.request.get('C_points')),
             'E': int(self.request.get('E_points')),
             'description': self.request.get('description'),
+            'image': self.request.get('image'),
         }
 
         hobby= Hobby(name=var['name'],
@@ -145,6 +134,7 @@ class MakeHobbyHandler(webapp2.RequestHandler):
                           C_points= var['C'],
                           E_points= var['E'],
                           description= var['description'],
+                          image= var['image'],
                           )
         key= hobby.put()
         self.response.write(template.render(var))
