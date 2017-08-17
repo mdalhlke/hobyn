@@ -156,14 +156,14 @@ class MakeHobbyHandler(webapp2.RequestHandler):
 class PersonalHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template= env.get_template('hobby.html')
-        #name
+        
         var={
             'name':self.request.get('name')
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
 
-        #Message
+        
         query = Message.query(Message.hobby_key == hobby.key)
         query_results=query.fetch()
         var['content']= query_results
@@ -180,19 +180,20 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         var['description']=hobby.description
 
         #Message
-        user= User.query(User.email==users.get_current_user().email()).get()
+        if users.get_current_user():
+            user= User.query(User.email==users.get_current_user().email()).get()
 
-        if self.request.get('content'):
-            message=Message(
-                content= self.request.get('content'),
-                user_key = user.key,
-                hobby_key= hobby.key
-            )
-            key= message.put()
-            self.redirect("/personal_hobby?name="+var['name'])
-        query = Message.query(Message.hobby_key == hobby.key)
-        query_results=query.fetch()
-        var['content']= query_results
+            if self.request.get('content'):
+                message=Message(
+                    content= self.request.get('content'),
+                    user_key = user.key,
+                    hobby_key= hobby.key
+                )
+                key= message.put()
+                self.redirect("/personal_hobby?name="+var['name'])
+            query = Message.query(Message.hobby_key == hobby.key)
+            query_results=query.fetch()
+            var['content']= query_results
 
         self.response.write(template.render(var))
 
