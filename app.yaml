@@ -22,6 +22,7 @@ handlers:
 
 - url: /
   script: main.app
+  secure: always
 - url: /all_hobbies
   script: main.app
 - url: /personal_hobby

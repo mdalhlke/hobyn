@@ -41,12 +41,13 @@ h4 {
   text-transform: capitalize;
 }
 
-.description {
+.recommendation {
   border-radius: 20px;
   padding: 10px;
   width: 55%;
   min-height: 300px;
   min-width: 300px;
+  max-width: 800px;
   border: 1px solid black;
   margin-right: 30px;
   display: inline-block;
@@ -54,6 +55,7 @@ h4 {
   position: relative;
   left: 22%;
   clear: both;
+  overflow: scroll;
 }
 
 .hobbyDescription {
@@ -63,8 +65,10 @@ h4 {
   border-color: #3e76c1;
   padding: 6px 6px 15px 10px;
   font-style: oblique;
-  height: 130px;
   position: relative;
+  overflow: scroll;
+  max-height: none;
+  height: 150px;
 }
 
 body {
