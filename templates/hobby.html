@@ -13,12 +13,12 @@
     {% include "nav.html" %}
 
       <h1 class = 'hobby_name'>{{ name }}</h1>
-      <img src = "{{ image }}" width="300" height="300">
+      <img src = "{{ image }}" class=hobby_image>
       <p class= "description">{{ description }}</p>
 
-      <p><strong>Don't know where to start?</strong>
-        <br>Search up "{{name}}" to help you find stores, places, ect where you can start.
-        <br><em>Note:</em> Click the plus button in the bottom right corner to get close to the markers and veiw exact location.</p>
+      <div class=margin_left><p><strong>Don't know where to start?</strong>
+        <br>Put "{{name}}" in the search bar to look for locations where you can start engaging in your hobby.
+        <br><em>Note:</em> Zoom in with the plus button in the bottom right corner to view the exact location of the markers.</p></div>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
       <script>
@@ -118,15 +118,12 @@
         {% for message in content %}
           <p>{{ message.content }}<p>
         {% endfor %}
-         <div>
-           <img src ="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="profile_pic" width="100">
 
-           <form action="/personal_hobby" method="post">
-             <textarea rows="4" cols="50" type="text" name="content" placeholder="Your comment goes here..."></textarea>
+           <div class=margin_left><form action="/personal_hobby" method="post">
+             <textarea rows="6" cols="80" type="text" name="content" placeholder="Your comment goes here..."></textarea>
              <input type="hidden" name="name" value="{{name}}">
-             <input type="submit" value="Post">
+             <br><input type="submit" value="Post"> </div>
            </form>
-         </div>
       <footer>
           <p>&copy; T.R.B.L. 2017</p>
       </footer>
