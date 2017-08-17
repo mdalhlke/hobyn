@@ -20,13 +20,14 @@
       <img src = "https://thumbs.dreamstime.com/z/hobby-icons-28567715.jpg" width="300" height="300">
       <p class= "description">{{ description }}</p>
 
+      <p>Search up "{{name}}" to help you find places where you can start {{name}}.<br><strong>Note:</strong> Click the plus button in the bottom right corner to get close to the markers and veiw the location.</p>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
       <script>
           function initAutocomplete() {
             var map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: 32.715736, lng: -117.161087},
-              zoom: 8,
+              zoom: 10,
               mapTypeId: 'roadmap'
             });
             infoWindow = new google.maps.InfoWindow;
