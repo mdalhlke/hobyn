@@ -2,6 +2,43 @@ h1{
   font-family: Nunito;
   text-align: center;
   font-size: 40px;
+  margin-bottom: 2px;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+#find_out_more{
+  font-size:14px;
+  padding:10px 12px;
+  display:inline-block;
+  margin:15px 5px 5px 5px;
+  border-radius:6px;
+  border:solid rgba(0,0,0,0.2);
+  border-width:1px 1px 5px;
+  box-shadow:0 5px 0 rgba(0,0,0,0.1),
+  inset 0 0 3px rgba(255,255,255,0.3);
+  cursor:pointer; user-select:none;
+  transition:0.4s ease;
+  background:#1c55a0;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  color: white;
+  text-decoration: none;
+}
+
+#find_out_more:hover {
+  transform:translateY(-3px);
+  box-shadow:0 6px 0 rgba(0,0,0,0.1),
+  inset 0 0 1px rgba(255,255,255,0.4);
+  border-bottom-width:8px;
+}
+
+.field{
+  text-transform: capitalize;
 }
 
 .description {
@@ -17,6 +54,17 @@ h1{
   position: relative;
   left: 22%;
   clear: both;
+}
+
+.hobbyDescription {
+  display: none;
+  margin: 5px 5px 20px 35px;
+  border-style: dotted;
+  border-color: #3e76c1;
+  padding: 6px 6px 15px 10px;
+  font-style: oblique;
+  height: 130px;
+  position: relative;
 }
 
 body {
