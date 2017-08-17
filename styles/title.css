@@ -9,3 +9,31 @@
   color: #F9BE04;
   text-decoration: #04B6F9 underline;
 }
+
+.topnav{
+  background-color: white;
+  overflow: hidden;
+  display: block;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #6bb3e5;
+    text-align: center;
+    padding: 21px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Cantata One;
+}
+
+.topnav a:hover {
+    background-color: #6bb3e5;
+    color: black;
+    font-size: 19px;
+}
+
+.topnav a.active {
+    background-color: #0e517f;
+    color: white;
+}
