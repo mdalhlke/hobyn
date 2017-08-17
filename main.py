@@ -105,7 +105,7 @@ class UserProfileHandler(webapp2.RequestHandler):
         template= env.get_template('user_profile.html')
         user=User.query(User.email == users.get_current_user().email()).get()
 
-        hobby_list=[]        
+        hobby_list=[]
         hobbies=Hobby.query().fetch()
         for hobby in hobbies:
             points=0
@@ -121,9 +121,9 @@ class UserProfileHandler(webapp2.RequestHandler):
                 points= points+1
             if points>=3:
                 hobby_list.append(hobby)
-                
+
         self.response.write(template.render({'hobby_list':hobby_list}))
-        
+
 
 class MakeHobbyHandler(webapp2.RequestHandler):
     def post(self):
@@ -162,6 +162,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
+        var['image']=hobby.image
 
         
         query = Message.query(Message.hobby_key == hobby.key)
@@ -178,6 +179,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
+        var['image']=hobby.image
 
         #Message
         if users.get_current_user():
