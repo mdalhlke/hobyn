@@ -40,3 +40,7 @@ class Question(ndb.Model):
     A_option= ndb.StringProperty()
     C_option= ndb.StringProperty()
     E_option= ndb.StringProperty()
+
+class UserPhoto(ndb.Model):
+    user = ndb.StringProperty()
+    blob_key = ndb.BlobKeyProperty()
