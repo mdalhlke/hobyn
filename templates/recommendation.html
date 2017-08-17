@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hobbies Recommendation</title>
+    <link rel="stylesheet" href="styles/recommendation.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    {% include "nav.html" %}
+
+        <h1>Hobbies Recommendation</h1>
+
+      <div class= "description">
+            {%for hobby in hobby_list%}
+          <div>
+             <li class=hobby><label class='field'>{{hobby.name}}</label>
+               <div class=hobbyDescription> {{hobby.description}}
+                   <form action="/personal_hobby" method="post">
+                       <input type="hidden" name="name" value="{{hobby.name}}">
+                        <input type="submit" id="find" value="Find Out More">
+                   </form>
+               </div>
+             </li>
+          </div>
+          {%endfor%}
+
+      </div>
+
+    <footer>
+      &copy; T.R.B.L. 2017
+    </footer>
+  </body>
+
+</html>

@@ -1,0 +1,66 @@
+h1{
+  font-family: Nunito;
+  text-align: center;
+  font-size: 40px;
+}
+
+.description {
+  border-radius: 20px;
+  padding: 10px;
+  width: 55%;
+  min-height: 300px;
+  min-width: 300px;
+  border: 1px solid black;
+  margin-right: 30px;
+  display: inline-block;
+  margin-bottom: 20px;
+  position: relative;
+  left: 22%;
+  clear: both;
+}
+
+body {
+  background-color: #e6ecf0;
+  margin: 10px;
+  height: 100px;
+}
+
+footer {
+  border-top: 2px solid black;
+  font-style: italic;
+  font-size: 12px;
+  color: black;
+  clear: both;
+  bottom: 5px;
+}
+
+img {
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.topnav {
+    background-color: white;
+    overflow: hidden;
+    display: block;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #6bb3e5;
+    text-align: center;
+    padding: 21px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav a:hover {
+    background-color: #6bb3e5;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #0e517f;
+    color: white;
+}

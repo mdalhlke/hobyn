@@ -75,7 +75,7 @@ class UserProfileHandler(webapp2.RequestHandler):
         return my_list
 
     def post(self):
-        template = env.get_template('user_profile.html')
+        template = env.get_template('recommendation.html')
         N,O,A,C,E=0,0,0,0,0
         for i in range(0, len(Question.query().fetch())):
             value=self.request.get("answer_"+str(i))
@@ -102,7 +102,7 @@ class UserProfileHandler(webapp2.RequestHandler):
             self.response.write("no user logged in")
         self.response.write(template.render())
     def get(self):
-        template= env.get_template('user_profile.html')
+        template= env.get_template('recommendation.html')
         user=User.query(User.email == users.get_current_user().email()).get()
 
         hobby_list=[]
@@ -156,7 +156,7 @@ class MakeHobbyHandler(webapp2.RequestHandler):
 class PersonalHobbyHandler(webapp2.RequestHandler):
     def get(self):
         template= env.get_template('hobby.html')
-        
+
         var={
             'name':self.request.get('name')
         }
@@ -164,7 +164,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         var['description']=hobby.description
         var['image']=hobby.image
 
-        
+
         query = Message.query(Message.hobby_key == hobby.key)
         query_results=query.fetch()
         var['content']= query_results
