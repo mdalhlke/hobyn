@@ -20,6 +20,7 @@ from models import *
 from datetime import date
 import webapp2
 import jinja2
+import json
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
@@ -60,6 +61,18 @@ class PersonalityTestHandler(webapp2.RequestHandler):
         self.response.write(template.render(var))
 
 class UserProfileHandler(webapp2.RequestHandler):
+    def sort_insertion(my_list):
+        for i in range(1,len(my_list)):
+            val_current = my_list[i]
+            pos = i 
+            # check backwards through sorted list for proper pos of val_current
+            while((pos > 0) and (my_list[pos-1] > val_current)):
+                my_list[pos] = my_list[pos-1]
+                pos = pos-1
+            if pos != i:
+                my_list[pos] = val_current 
+        return my_list 
+    
     def post(self):
         template = env.get_template('user_profile.html')
         N,O,A,C,E=0,0,0,0,0
@@ -89,8 +102,38 @@ class UserProfileHandler(webapp2.RequestHandler):
         self.response.write(template.render())
     def get(self):
         template= env.get_template('user_profile.html')
+        user=User.query(User.email == users.get_current_user().email()).get()
+        hobby_lists=[]
+        keys =["N_points","O_points","A_points","C_points","E_points"]
+        for i in range(1,len(keys)):
+            val_current= getattr(user,keys[i])
+            pos =i
+            string_value= keys[pos]
+            while((pos>0)and (getattr(user,keys[pos-1])<val_current)): 
+                keys[pos]= keys[pos-1]
+                keys[pos-1]=string_value
+                pos=pos-1
+                string_value= keys[pos]
+                #self.response.write(keys) 
+            setattr(user,keys[pos],val_current)
+        #self.response.write(keys)  
         
-        self.response.write(template.render())
+        for i in range(0,2):
+            query= Hobby.query(getattr(Hobby,keys[i])<=getattr(user,keys[i])).order(getattr(Hobby,keys[i])).fetch()
+            hobby_lists.append(query)
+        self.response.write(template.render({'hobby_lists':hobby_lists}))
+    #example function
+        #for i in range(1,len(my_list)):
+        #    val_current = my_list[i]
+        #    pos = i 
+        #    # check backwards through sorted list for proper pos of val_current
+        #    while((pos > 0) and (my_list[pos-1] > val_current)):
+        #        my_list[pos] = my_list[pos-1]
+        #        pos = pos-1
+        #    if pos != i:
+        #        my_list[pos] = val_current 
+        #return my_list 
+    #end example
 
 class MakeHobbyHandler(webapp2.RequestHandler):
     def post(self):
@@ -200,17 +243,6 @@ class QuestionHandler(webapp2.RequestHandler):
         template=env.get_template('pre_create_question.html')
         self.response.write(template.render())
 
-#class HobbyHandler(webapp2.RequestHandler):
-    #def get(self):
-      #  template = env.get_template('hobby.html')
-      #  hobby_name = self.request.get('name')
-      #  hobby = Hobby.query(Hobby.name == hobby_name).fetch()
-      #  hobby_description = hobby.description
-      #  var = {
-      #      'hobby': hobby.name,
-      #      'hobby_description': hobby.description
-      #  }
-      #  self.response.write(template.render(var))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),

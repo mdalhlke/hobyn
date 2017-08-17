@@ -43,6 +43,23 @@
         <img src ="http://www.ruralagriventures.com/wp-content/uploads/2017/05/man-team.jpg" class="friends_pic" width="60">
         <p>You can use the overflow property when you want to have better control of the layout. The default value is visible.</p>
       </div>
+      
+      <div>
+              {% for hobby_list in hobby_lists%}
+                {%for hobby in hobby_list%}
+              <div>
+                 <li class=hobby><label class='field'>{{hobby.name}}</label>
+                   <div class=hobbyDescription> {{hobby.description}}
+                       <form action="/personal_hobby" method="post">
+                           <input type="hidden" name="name" value="{{hobby.name}}">
+                            <input type="submit" id="find" value="Find Out More">
+                       </form>
+                   </div>
+                 </li>
+              </div>
+              {%endfor%}
+              {%endfor%}
+          </div>
 
     <footer>
       &copy; T.R.B.L. 2017
