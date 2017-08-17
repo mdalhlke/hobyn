@@ -101,24 +101,14 @@ class UserProfileHandler(webapp2.RequestHandler):
             points=0
             minimum=3
             if  hobby.N_points < user.N_points and 0!=hobby.N_points:
-                if user.N_points-hobby.N_points>=5:
-                    points= points+minimum
                 points= points+1
             if  hobby.O_points < user.O_points and 0!=hobby.O_points:
-                if user.O_points-hobby.O_points>=5:
-                    points= points+minimum
                 points= points+1
             if  hobby.A_points < user.A_points and 0!=hobby.A_points:
-                if user.A_points-hobby.A_points>=5:
-                    points= points+minimum
                 points= points+1
             if  hobby.C_points < user.C_points and 0!=hobby.C_points:
-                if user.C_points-hobby.C_points>=5:
-                    points= points+minimum
                 points= points+1
             if  hobby.E_points < user.E_points and 0!=hobby.E_points:
-                if user.E_points-hobby.E_points>=5:
-                    points= points+minimum
                 points= points+1
             if points>=minimum:
                 hobby_list.append(hobby)
