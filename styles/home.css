@@ -1,7 +1,19 @@
+h1{
+  font-family: Kaushan Script;
+  margin: 10px;
+  font-size: 55px;
+  letter-spacing: 3px;
+  color:#F9BE04;
+  text-decoration: #04B6F9 underline;
+  text-align:center;
+  text-shadow: 1px 2px 5px black;
+}
+
 body {
   background-color: #e6ecf0;
   margin: 0;
   height: 100;
+  cursor: default;
 }
 
 footer {
@@ -33,11 +45,11 @@ footer {
 }
 
 .column img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 p {
@@ -77,11 +89,13 @@ p {
     padding: 21px;
     text-decoration: none;
     font-size: 18px;
+    font-family: Cantata One;
 }
 
 .topnav a:hover {
     background-color: #6bb3e5;
     color: black;
+    font-size: 19px;
 }
 
 .topnav a.active {
@@ -91,16 +105,15 @@ p {
 
 .fab{
   text-decoration: none;
-  color:black;
+  color:white;
   font-family:Georgia;
   font-size: 20px;
-  background-color: #b3ffb3;
-  border:none;
+  background-color: transparent;
+  border: solid #F9BE04;
   border-radius:54px;
   margin: 15px;
   padding:10px;
   width:100px;
-  box-shadow: 0px 10px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
@@ -108,8 +121,9 @@ p {
 
 .fab:hover{
   text-decoration: none;
-  background-color: #aed0e8;
-  box-shadow: 0px 15px 20px rgba(173, 216, 230, 0.3);
+  background-color: #6bb3e5;
+  border: solid #6bb3e5;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
   color: #000;
   transform: translateY(-7px);
 }
@@ -133,7 +147,7 @@ a.logout {
   color:black;
 }
 
-#right-panel {
+/*#right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
@@ -188,4 +202,4 @@ li:nth-child(odd) {
 #more {
   width: 100%;
   margin: 5px 0 0 0;
-}
+}*/
