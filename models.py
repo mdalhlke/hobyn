@@ -15,7 +15,7 @@ class User(ndb.Model):
 class Hobby(ndb.Model):
     name= ndb.StringProperty()
     description= ndb.StringProperty()
-    image= ndb.BlobProperty()
+    image= ndb.StringProperty()
     N_points= ndb.IntegerProperty()
     O_points= ndb.IntegerProperty()
     A_points= ndb.IntegerProperty()
@@ -40,7 +40,3 @@ class Question(ndb.Model):
     A_option= ndb.StringProperty()
     C_option= ndb.StringProperty()
     E_option= ndb.StringProperty()
-
-class UserPhoto(ndb.Model):
-    user = ndb.StringProperty()
-    blob_key = ndb.BlobKeyProperty()
