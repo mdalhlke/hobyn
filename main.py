@@ -22,6 +22,7 @@ import webapp2
 import jinja2
 from google.appengine.api import users
 
+
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class MainHandler(webapp2.RequestHandler):
@@ -61,6 +62,18 @@ class PersonalityTestHandler(webapp2.RequestHandler):
         self.response.write(template.render(var))
 
 class UserProfileHandler(webapp2.RequestHandler):
+    def sort_insertion(my_list):
+        for i in range(1,len(my_list)):
+            val_current = my_list[i]
+            pos = i 
+            # check backwards through sorted list for proper pos of val_current
+            while((pos > 0) and (my_list[pos-1] > val_current)):
+                my_list[pos] = my_list[pos-1]
+                pos = pos-1
+            if pos != i:
+                my_list[pos] = val_current 
+        return my_list 
+    
     def post(self):
         template = env.get_template('user_profile.html')
         N,O,A,C,E=0,0,0,0,0
@@ -90,9 +103,26 @@ class UserProfileHandler(webapp2.RequestHandler):
         self.response.write(template.render())
     def get(self):
         template= env.get_template('user_profile.html')
+        user=User.query(User.email == users.get_current_user().email()).get()
+        hobby_list=[]        
+        hobbies=Hobby.query().fetch()
+        for hobby in hobbies:
+            points=0
+            if  hobby.N_points < user.N_points and 0!=hobby.N_points:
+                points= points+1
+            if  hobby.O_points < user.O_points and 0!=hobby.O_points:
+                points= points+1
+            if  hobby.A_points < user.A_points and 0!=hobby.A_points:
+                points= points+1
+            if  hobby.C_points < user.C_points and 0!=hobby.C_points:
+                points= points+1
+            if  hobby.E_points < user.E_points and 0!=hobby.E_points:
+                points= points+1
+            if points>=3:
+                hobby_list.append(hobby)
+                
+        self.response.write(template.render({'hobby_list':hobby_list}))
         
-        self.response.write(template.render())
-
 class MakeHobbyHandler(webapp2.RequestHandler):
     def post(self):
         template = env.get_template('create_hobby.html')
@@ -201,17 +231,6 @@ class QuestionHandler(webapp2.RequestHandler):
         template=env.get_template('pre_create_question.html')
         self.response.write(template.render())
 
-#class HobbyHandler(webapp2.RequestHandler):
-    #def get(self):
-      #  template = env.get_template('hobby.html')
-      #  hobby_name = self.request.get('name')
-      #  hobby = Hobby.query(Hobby.name == hobby_name).fetch()
-      #  hobby_description = hobby.description
-      #  var = {
-      #      'hobby': hobby.name,
-      #      'hobby_description': hobby.description
-      #  }
-      #  self.response.write(template.render(var))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -221,6 +240,4 @@ app = webapp2.WSGIApplication([
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
-    #('/hobby',HobbyHandler),
-
 ], debug=True)
