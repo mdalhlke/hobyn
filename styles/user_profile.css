@@ -46,32 +46,6 @@ img {
   border-radius: 20px;
 }
 
-.topnav {
-    background-color: white;
-    overflow: hidden;
-    display: block;
-}
-
-.topnav a {
-    float: left;
-    display: block;
-    color: #6bb3e5;
-    text-align: center;
-    padding: 21px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.topnav a:hover {
-    background-color: #6bb3e5;
-    color: black;
-}
-
-.topnav a.active {
-    background-color: #0e517f;
-    color: white;
-}
-
 div.userbio {
   width: 50px;
   height: 100px;
