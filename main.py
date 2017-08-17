@@ -173,6 +173,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
+        var['image']=hobby.image
 
         #Message
         query = Message.query(Message.hobby_key == hobby.key)
@@ -189,6 +190,7 @@ class PersonalHobbyHandler(webapp2.RequestHandler):
         }
         hobby=Hobby.query(Hobby.name==var['name']).get()
         var['description']=hobby.description
+        var['image']=hobby.image
 
         #Message
         user= User.query(User.email==users.get_current_user().email()).get()
@@ -253,6 +255,5 @@ app = webapp2.WSGIApplication([
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
-    #('/hobby',HobbyHandler),
 
 ], debug=True)
