@@ -20,11 +20,8 @@ from models import *
 from datetime import date
 import webapp2
 import jinja2
-<<<<<<< HEAD
-import json
-=======
 from google.appengine.api import users
->>>>>>> 558635451949a59d6cc88c242f0b61966d849583
+
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
