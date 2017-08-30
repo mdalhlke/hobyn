@@ -234,6 +234,15 @@ class AboutHandler(webapp2.RequestHandler):
         template = env.get_template("about_us.html")
         
         self.response.write(template.render())
+<<<<<<< HEAD
+=======
+
+class AboutUsHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('about_us.html')
+        self.response.write(template.render())
+
+>>>>>>> 3b21c47abea99b7f6eee20c9955a52adc6c90bd7
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -243,5 +252,9 @@ app = webapp2.WSGIApplication([
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
+<<<<<<< HEAD
     ('/about', AboutHandler),
+=======
+    ('/about_us',AboutUsHandler),
+>>>>>>> 3b21c47abea99b7f6eee20c9955a52adc6c90bd7
 ], debug=True)
