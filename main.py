@@ -226,9 +226,14 @@ class QuestionHandler(webapp2.RequestHandler):
         key= question.put()
         self.response.write(template.render(var))
     def get(self):
-        template=env.get_template('pre_create_question.html')
+        template= env.get_template('pre_create_question.html')
         self.response.write(template.render())
-
+        
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("about_us.html")
+        
+        self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -238,4 +243,5 @@ app = webapp2.WSGIApplication([
     ('/personal_hobby', PersonalHobbyHandler),
     ('/all_hobbies', AllHobbiesHandler),
     ('/make_question',QuestionHandler),
+    ('/about', AboutHandler),
 ], debug=True)
