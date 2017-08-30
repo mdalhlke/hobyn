@@ -1,0 +1,41 @@
+body{
+    background-color:#e6ecf0;
+}
+#page{
+    color:#04B6F9;
+    background-color:rgba(249,190,4,0.6);
+    text-shadow: 1px 2px 3px black;
+    font-size:20px;
+    
+    display: block;
+    position: relative;
+    margin:15px 50px 60px 50px;
+    padding:10px 30px 30px 30px;
+    border: 5px solid #6bb3e8;
+}
+
+.description {
+    
+    background-color:rgba(4,182,249,.1);
+    display:inline-block;
+    position:relative;
+    min-width:150px;
+    width:250px;
+    height:200px;
+    padding: 5px; 
+    
+}
+#joke{
+    display:none;
+}
+img:hover, #joke {
+    display:block;
+}
+
+footer{
+    display:relative;
+}
+.comment{
+    font-size:10px;
+    color:#04B6F9
+}
